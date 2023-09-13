@@ -55,7 +55,7 @@ Now we have balanced our classes and our data is ready for KNN.
 
 We will separate out the categorical variables and numerical variables to apply different distance metrics to them. Note: Apply Manhattan(cityblock) distance when you have a lot of numerical features, we have only 3 numerical features hence we will use euclidean distance here. For categorical variables, we can choose jaccard, hamming among other options based on use cases and data and domain knowledge.We choose hamming distance for our use case here. If we have ordinal variables, then we can implement gower distance for those features. WE do not have any ordinal features in our dataset hence we skip gower distance.
 
-Now we try to find the best k value and best threshold using K-fold Cross Validation for our model by trying different k_values. Then, we select the optimal threshold and k value for our final model. We can see from the plot above that the model is able to distinguish between positive and negative classes when the K-value is 21. The area under the curve is 86% which is not bad for this model performance.
+Now we try to find the best k value and best threshold using K-fold Cross Validation for our model by trying different k_values. We iterate through k values and a range of thresholds within each fold of cross-validation. We keep track of the best_k_value, best_threshold, and best_f1_score. The threshold that yields the highest F1-score is selected as the best threshold. 
 
 Finally we will train and fit the final model with the best K value and threshold and generate predictions.
 
