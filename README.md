@@ -75,13 +75,15 @@ Let's further look into the relationship between numerical variables using bubbl
 ```bash
 $Bubble Plot of Age, BMI, Average Glucose Level...
 ```
+![bubble_plots](https://github.com/kkharel/ML-KNN-Stroke-Prediction/assets/59852121/c1378c16-b977-42ed-a268-66a7eaf5adef)
 
 From the bubble plot, we can see age and bmi has somewhat linearly increasing relationship. Higher bmi and higher age can be a potential reason for having a stroke. We can also see that higher glucose and older age can also be a potential reason for having a stroke. If we look at age and bmi plot, we can see two clusters suggesting that glucose may be bimodal. To further explore the data from above findings, we look at the distribution of numerical variables as well as counts of categorial variables below.
 
 ```bash
 $Distribution Plot of Data...
 ```
-![bubble_plots](https://github.com/kkharel/ML-KNN-Stroke-Prediction/assets/59852121/c1378c16-b977-42ed-a268-66a7eaf5adef)
+![data_distribution](https://github.com/kkharel/ML-KNN-Stroke-Prediction/assets/59852121/f9d9f4a0-9e2a-46a9-bfe7-843558b9cc67)
+
 
 From the data distribution, we further see that our classes of stroke are imbalanced and the glucose level may have bimodal distribution. BMI looks normally distributed. For better visualization of relationship between numerical features (can also be categorical as well), I'm also plotting the pairplot below with kernel density estimation on the diagonal.
 
