@@ -1,14 +1,53 @@
 # ML-KNN-Stroke-Prediction
 Exploring KNN algorithm for stroke prediction dataset. The dataset comes from kaggle [https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset]
 
+## Data Loading and Initial Cleaning and Exploration
 We can see that 201 observations has missing bmi values, Lets count the number of instances where there is a stroke and has missing bmi values
+We will not be dropping any missing values columns since we will be losing 40 instances of stroke. We will later impute the values with median but we can also test out different methods and pick the one that performs best.
 
-We will not be dropping any missing values columns since we will be losing 40 instances of stroke. We will impute the values with median but we can also test out different methods and pick the one that performs best.
+Information about dataset:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5110 entries, 0 to 5109
+Data columns (total 12 columns):
+ #   Column             Non-Null Count  Dtype
+---  ------             --------------  -----
+ 0   id                 5110 non-null   int64
+ 1   gender             5110 non-null   object
+ 2   age                5110 non-null   float64
+ 3   hypertension       5110 non-null   int64
+ 4   heart_disease      5110 non-null   int64
+ 5   ever_married       5110 non-null   object
+ 6   work_type          5110 non-null   object
+ 7   Residence_type     5110 non-null   object
+ 8   avg_glucose_level  5110 non-null   float64
+ 9   bmi                4909 non-null   float64
+ 10  smoking_status     5110 non-null   object
+ 11  stroke             5110 non-null   int64
+dtypes: float64(3), int64(4), object(5)
+memory usage: 479.2+ KB
+None
+Null values in the dataset:
+id                     0
+gender                 0
+age                    0
+hypertension           0
+heart_disease          0
+ever_married           0
+work_type              0
+Residence_type         0
+avg_glucose_level      0
+bmi                  201
+smoking_status         0
+stroke                 0
+dtype: int64
+Number of instances with missing BMI values and a stroke: 40
+Dropping Non Relevant Columns and Rows...
+Dropped column: id
+Dropped row index(es) where gender == 'Other': [3116]
 
-## Removing non-relevant columns
-We will be removing some observations from bmi column as suggested by bubble plots and boxplot as outliers with caution since these observations are meaningful for stroke prediction.
 
 ## Exploratory Data Analysis
+We start by looking at the correlation plot of numerical features.
 The correlation plot is suggesting that all numerical features are positively correlated with each other but the strength of the correlation is less than 50%. Age and bmi seems to have highest correlation.
 
 Bar Plot of Stroke Occurences by each feature is suggesting we have higher instances of stroke for females gender, never smoked individuals, married individuals, individuals who work in private sector and individuals who lives in urban areas. Just by looking at the count, we have some idea on number of stroke occurences by each features but we have no idea on what %age of individuals have the stroke. To analyze the percentage we create another bar plot below.
