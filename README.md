@@ -49,19 +49,51 @@ We will not be dropping any missing values columns since we will be losing 40 in
 
 ## Exploratory Data Analysis
 We start by looking at the correlation plot of numerical features.
+```bash
+$Correlation Plot...
+```
 The correlation plot is suggesting that all numerical features are positively correlated with each other but the strength of the correlation is less than 50%. Age and bmi seems to have highest correlation.
 
+```bash
+$Count of Stroke Cases by Features...
+```
 Bar Plot of Stroke Occurences by each feature is suggesting we have higher instances of stroke for females gender, never smoked individuals, married individuals, individuals who work in private sector and individuals who lives in urban areas. Just by looking at the count, we have some idea on number of stroke occurences by each features but we have no idea on what %age of individuals have the stroke. To analyze the percentage we create another bar plot below.
+
+```bash
+$Percentage of Stroke Cases by Features...
+```
 
 From the percentage bar plot, we can see that male has the higher percentage of stroke out of all the observations that are collected for male. People that have heart disease have higher percentage of stroke and people with hypertension also have higher pecentage of stroke.
 
 Let's further look into the relationship between numerical variables using bubble plots.
-
+```bash
+$Bubble Plot of Age, BMI, Average Glucose Level...
+```
 From the bubble plot, we can see age and bmi has somewhat linearly increasing relationship. Higher bmi and higher age can be a potential reason for having a stroke. We can also see that higher glucose and older age can also be a potential reason for having a stroke. If we look at age and bmi plot, we can see two clusters suggesting that glucose may be bimodal. To further explore the data from above findings, we look at the distribution of numerical variables as well as counts of categorial variables below.
+
+```bash
+$Distribution Plot of Data...
+```
 
 From the data distribution, we further see that our classes of stroke are imbalanced and the glucose level may have bimodal distribution. BMI looks normally distributed. For better visualization of relationship between numerical features (can also be categorical as well), I'm also plotting the pairplot below with kernel density estimation on the diagonal.
 
-The pairplot further strengthen out findings from bubble plots above. As we previously saw that glucose may be bimodal, let's verify this using  hypothesis testing  with Hartigan's Dip Test.
+```bash
+$Pairplot of Numerical Features and Stroke...
+```
+
+The pairplot further strengthen out findings from bubble plots above. Now, we handle the outliers on bmi column and look at the boxplot before and after handling
+```bash
+$Outlier Handling...
+$Boxplot Before Outliers...
+```
+
+The boxplot further strengthens our findings of outliers on bmi observations. We will only handle extreme points above 60 that was shown on bubble plot above and keep the rest of the observations. We do not want to lose any stroke observations since the class stroke has little instances compared to no stroke in the dataset
+
+```bash
+$Boxplot After Outlier handling...
+```
+
+As we previously saw that glucose may be bimodal, let's verify this using  hypothesis testing  with Hartigan's Dip Test.
 
 We confirmed that the data is bimodal. To handle for this situation, we can create a binary variables with bins based on average glucose levels. We also create binary variable to group age.
 
