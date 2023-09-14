@@ -1,5 +1,5 @@
 # ML-KNN-Stroke-Prediction
-Exploring KNN algorithm for stroke prediction dataset
+Exploring KNN algorithm for stroke prediction dataset. The dataset comes from kaggle [https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset]
 
 We can see that 201 observations has missing bmi values, Lets count the number of instances where there is a stroke and has missing bmi values
 
