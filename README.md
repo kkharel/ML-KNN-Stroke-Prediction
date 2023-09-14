@@ -6,7 +6,7 @@ We can see that 201 observations has missing bmi values, Lets count the number o
 We will not be dropping any missing values columns since we will be losing 40 instances of stroke. We will impute the values with median but we can also test out different methods and pick the one that performs best.
 
 ## Removing non-relevant columns
-We will not be removing any observations as outliers since these observations are meaningful for stroke prediction
+We will be removing some observations from bmi column as suggested by bubble plots and boxplot as outliers with caution since these observations are meaningful for stroke prediction.
 
 ## Exploratory Data Analysis
 The correlation plot is suggesting that all numerical features are positively correlated with each other but the strength of the correlation is less than 50%. Age and bmi seems to have highest correlation.
