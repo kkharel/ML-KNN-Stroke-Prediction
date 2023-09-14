@@ -5,45 +5,6 @@ Exploring KNN algorithm for stroke prediction dataset. The dataset comes from ka
 We can see that 201 observations has missing bmi values, Lets count the number of instances where there is a stroke and has missing bmi values
 We will not be dropping any missing values columns since we will be losing 40 instances of stroke. We will later impute the values with median but we can also test out different methods and pick the one that performs best.
 
-Information about dataset:
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 5110 entries, 0 to 5109
-Data columns (total 12 columns):
-     Column             Non-Null Count  Dtype
----  ------             --------------  -----
- 0   id                 5110 non-null   int64
- 1   gender             5110 non-null   object
- 2   age                5110 non-null   float64
- 3   hypertension       5110 non-null   int64
- 4   heart_disease      5110 non-null   int64
- 5   ever_married       5110 non-null   object
- 6   work_type          5110 non-null   object
- 7   Residence_type     5110 non-null   object
- 8   avg_glucose_level  5110 non-null   float64
- 9   bmi                4909 non-null   float64
- 10  smoking_status     5110 non-null   object
- 11  stroke             5110 non-null   int64
-dtypes: float64(3), int64(4), object(5)
-memory usage: 479.2+ KB
-None
-Null values in the dataset:
-id                     0
-gender                 0
-age                    0
-hypertension           0
-heart_disease          0
-ever_married           0
-work_type              0
-Residence_type         0
-avg_glucose_level      0
-bmi                  201
-smoking_status         0
-stroke                 0
-dtype: int64
-Number of instances with missing BMI values and a stroke: 40
-Dropping Non Relevant Columns and Rows...
-Dropped column: id
-Dropped row index(es) where gender == 'Other': [3116]
 
 
 ## Exploratory Data Analysis
