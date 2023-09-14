@@ -216,34 +216,111 @@ The purpose of this project was to explictly understand how KNN algorithm works 
 
 Now we have balanced our classes and our data is ready for KNN.
 
-We will separate out the categorical variables and numerical variables to apply different distance metrics to them. Note: Apply Manhattan(cityblock) distance when you have a lot of numerical features, we have only 3 numerical features hence we will use euclidean distance here. For categorical variables, we can choose jaccard, hamming among other options based on use cases and data and domain knowledge.We choose hamming distance for our use case here. If we have ordinal variables, then we can implement gower distance for those features. WE do not have any ordinal features in our dataset hence we skip gower distance.
+We separate out the categorical variables and numerical variables to apply different distance metrics to them. Note: Apply Manhattan(cityblock) distance when you have a lot of numerical features, we have only 3 numerical features hence we will use euclidean distance here. For categorical variables, we can choose jaccard, hamming among other options based on use cases and data and domain knowledge.We choose hamming distance for our use case here. If we have ordinal variables, then we can implement gower distance for those features. WE do not have any ordinal features in our dataset hence we skip gower distance.
 
+```bash
+$Extracting column index of Features...
+```
 Now we try to find the best k value and best threshold using K-fold Cross Validation for our model by trying different k_values. We iterate through k values and a range of thresholds within each fold of cross-validation. We keep track of the best_k_value, best_threshold, and best_f1_score. The threshold that yields the highest F1-score is selected as the best threshold. 
 
-Finally we will train and fit the final model with the best K value and threshold and generate predictions.
+```bash
+$Evaluating and Finding the best k value and threshold using cross-validation for binary classification...
+Best K Value: 25
+Best Threshold: 0.48
+Best F1 Score: 0.7724867724867724
+```
 
+We will show the plot generated through applying above method below.
+
+```bash
+$Thresholds and K value Plot...
+```
+![threshold_k](https://github.com/kkharel/ML-KNN-Stroke-Prediction/assets/59852121/308b7b6e-962a-4ce8-a871-b62a657426af)
+
+From the plot above, we can visualize the best threshold and best k value for different thresholds and k values trials. Finally we will train and fit the final model with the best K value and threshold and generate predictions.
+```bash
+$Building final KNN classifier based on the best hyperparameters found in a previous step and making predictions on a test dataset...
+```
 Now we will assess the performance of the KNN classifier through various reports, plots and metrics.
 
-The prevalence of stroke cases in the dataset is 5%, while the model's precision in identifying stroke cases is 17%."
+```bash
+$Classification and Confusion matrix from final classifier...
+Classification Report:
+              precision    recall  f1-score   support
 
-From the classification report, the model's recall for stroke cases (80%) is a crucial metric because it indicates that the model is effective at capturing a significant portion of observations that may have a stroke. The lower precision for stroke cases (17%) means that there will be some false positives, but this might be an acceptable trade-off, depending on the context, since we want to ensure that we don't miss any potential stroke cases. The overall accuracy (80%) reflects that the model is performing in identifying observations that may have a stroke within the dataset.
+           0       0.99      0.71      0.83      1458
+           1       0.13      0.83      0.22        75
+
+    accuracy                           0.72      1533
+   macro avg       0.56      0.77      0.53      1533
+weighted avg       0.95      0.72      0.80      1533
+
+Confusion Matrix:
+[[1040  418]
+ [  13   62]]
+
+```
+The prevalence of stroke cases in the dataset is 5%, while the model's precision in identifying stroke cases is 13%."
+
+From the classification report, the model's recall for stroke cases (83%) is a crucial metric because it indicates that the model is effective at capturing a significant portion of observations that may have a stroke. The lower precision for stroke cases (13%) means that there will be some false positives, but this might be an acceptable trade-off, depending on the context, since we want to ensure that we don't want to miss any potential stroke cases. The overall accuracy (72%) reflects that the model is fairly performing in identifying observations that may have a stroke within the dataset but. 
+
+In disease prevention and identification cases like stroke prediction, the model is not acceptable. We can try other models like Logistic Regression, Random Forests etc... to see if they perform better than the KNN model. I would like to reiterate again that the focus for this project was on KNN algorithm but upcoming projects will implement other models as well. If anyone is interested to try out other models, feel free to clone the repository and pick up from here.
 
 The weighted average precision (95%) suggests that the model is highly precise for non-stroke cases, which can be important to avoid unnecessary concern for those without strokes.
 
-## Confusion Matrix
-True Positives (TP): 60, the model correctly identified 60 instances as potential stroke cases
-True Negatives (TN): 1161, the model correctly identified 1161 instances as non stroke cases
-False Positives (FP): 297, the model incorrectly predicted a stroke when there was no stroke
-False Negatives (FN): 15, the model failed to identify 15 instances of potential stroke cases
+From the consfusion metrics, 
+True Positives (TP): 62, the model correctly identified 60 instances as potential stroke cases
+True Negatives (TN): 1040, the model correctly identified 1161 instances as non stroke cases
+False Positives (FP): 418, the model incorrectly predicted a stroke when there was no stroke
+False Negatives (FN): 13, the model failed to identify 15 instances of potential stroke cases
 
-## ROC Curve
+Now we plot the ROC curve.
 
-ROC curve above plots the True Positive Rate (sensitivity) against the False Positive Rate (1 - specificity) at different decision thresholds. A perfect model hugs the upper-left corner of the plot, while random guessing follows the diagonal line. The Area Under the Curve (AUC) quantifies overall model performance, with a higher AUC indicating better discrimination ability. ROC curves aid in threshold selection and provide insights into a model's ability to distinguish between positive and negative cases. Our model is performing really well through the lens of ROC curve.
+```bash
+$ROC plot...
+```
+![ROC_curve](https://github.com/kkharel/ML-KNN-Stroke-Prediction/assets/59852121/45a07a9f-c081-497d-b7a8-8838708a500d)
+
+ROC curve above plots the True Positive Rate (sensitivity) against the False Positive Rate (1 - specificity) at different decision thresholds. A perfect model hugs the upper-left corner of the plot, while random guessing follows the diagonal line. The Area Under the Curve (AUC) quantifies overall model performance, with a higher AUC indicating better discrimination ability. ROC curves aid in threshold selection and provide insights into a model's ability to distinguish between positive and negative cases. Our model is good through the lens of ROC curve.
 
 We have insights into the model predictions. Now, we should be able to explain our model, There are various ways to explain machine learning models but we will be focusing on couple metrics to explain our model
 
-## Explaining the model
-#Permutation importance is one way to explain our model by shuffling the values of a column concept. Permutation importance is used only after the model is fit. It helps us answer " What features does the model thinks are important?"
+Permutation importance is one way to explain our model by shuffling the values of a column concept. Permutation importance is used only after the model is fit. It helps us answer " What features does the model thinks are important?"
+
+```bash
+$Explaining the KNN Model with Permutation Importance...
+Explained as: feature importances
+
+Feature importances, computed as a decrease in score when feature
+values are permuted (i.e. become noise). This is also known as
+permutation importance.
+
+If feature importances are computed on the same data as used for training,
+they don't reflect importance of features for generalization. Use a held-out
+dataset if you want generalization feature importances.
+
+0.0660 ± 0.0119  age
+0.0061 ± 0.0013  age_category_old adult
+0.0039 ± 0.0111  avg_glucose_level
+0.0025 ± 0.0044  smoking_status_Unknown
+0.0025 ± 0.0028  Residence_type
+0.0018 ± 0.0059  bmi
+0.0017 ± 0.0016  heart_disease
+0.0017 ± 0.0018  age_category_retired
+0.0014 ± 0.0021  glucose_category_low
+0.0014 ± 0.0024  ever_married
+0.0014 ± 0.0022  hypertension
+0.0009 ± 0.0018  work_type_Govt_job
+0.0005 ± 0.0015  age_category_adult
+     0 ± 0.0000  age_category_underage
+     0 ± 0.0000  age_category_teen
+     0 ± 0.0000  glucose_category_borderline
+     0 ± 0.0000  work_type_children
+     0 ± 0.0000  work_type_Never_worked
+     0 ± 0.0000  glucose_category_dangerous
+-0.0003 ± 0.0037  work_type_Private
+                 … 7 more …
+```
 
 Features with positive permutation importance indicates that shuffling the values for these features resulted in decrease in model performance. Hence, these are considered important features for models prediction. Features with neutral or close to zero importance indicates that Shuffling their values did not significantly affect the model performance. Hence, they are neither important nor unimportant. Features with negative permutation importance indicates that shuffling the values for these features resulted in increase in model performace compared to baseline. This suggests that model might have been relying on incorrect or misleading information from these features, and shuffling them helped the model make better predictions. We should consider re-evaluating the relevance of features with negative importance and investigate the reasons behind negative impact on the model. The standard deviation measures the uncertainty or variablility in the importance scores across multiple iterations of permutation process. It tells us that there is some uncertainty about the exact magnitude of its importance.
 
@@ -255,9 +332,44 @@ Are predicted stroke differences between class 1 and class 0 due to difference i
 
 Since we cannot use PDP to explain our model we will use LimeTabularExplainer which visualizes and presents the importance of each feature in contributing to the model's decision for a specific instance from the test data. This can help us understand the model's behavior and the factors influencing its predictions for that instance.
 
+```bash
+$Explaining the KNN Model with LIME using instance from dataset...
+Explanation for row index: 1
+<lime.explanation.Explanation object at 0x000001B30173E3E0>
+Row data:
+gender                            0.000000
+hypertension                      0.000000
+heart_disease                     0.000000
+ever_married                      1.000000
+Residence_type                    1.000000
+work_type_Govt_job                0.000000
+work_type_Never_worked            0.000000
+work_type_Private                 1.000000
+work_type_Self-employed           0.000000
+work_type_children                0.000000
+smoking_status_Unknown            1.000000
+smoking_status_formerly smoked    0.000000
+smoking_status_never smoked       0.000000
+smoking_status_smokes             0.000000
+glucose_category_borderline       0.000000
+glucose_category_dangerous        0.000000
+glucose_category_high             0.000000
+glucose_category_low              0.000000
+glucose_category_normal           1.000000
+age_category_adult                0.000000
+age_category_old adult            0.000000
+age_category_retired              1.000000
+age_category_teen                 0.000000
+age_category_underage             0.000000
+age                               0.743652
+avg_glucose_level                 0.326009
+bmi                               0.528436
+Name: 1, dtype: float64
+```
 Note that LIME creates a locally faithful model around a specific prediction by sampling and perturbing the input data. It offers insights into how different features
 affects the prediction for a single instance.
 
 We cannot forget SHAP values for model interpretability. Shapley values is a model-agnostic way and are used to explain the prediction of a model by quantifying how much each feature contributes to that prediction. They provide a global explanation for a specific prediction. These are particularlyimportant for complex models like gradient boosting and deep learning.
 
+To conclude, the KNN model is not performing well for this specific use case. We can try other algorithms like Logistic Regression, Decision Trees, Random Forests etc... and see if those models perform better than the current model. There is a lot of room for improvement. One can tune hyperparameters of the model like k-value and threshold and see if there is positive change in performance. One can always iterate and improve the model.
 
