@@ -1,4 +1,4 @@
-# <p align="center">ML KNN Algorithm Exploration for Binary Classification of Stroke Prediction/p>
+# <p align="center">ML KNN Algorithm Exploration for Binary Classification of Stroke Prediction
 
 For this project, we will be exploring KNN algorithm for stroke prediction dataset. The dataset comes from kaggle [https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset]
 
