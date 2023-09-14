@@ -2,8 +2,6 @@
 Exploring KNN algorithm for stroke prediction dataset. The dataset comes from kaggle [https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset]
 
 ## Data Loading and Initial Cleaning and Exploration
-We can see that 201 observations has missing bmi values, Lets count the number of instances where there is a stroke and has missing bmi values
-We will not be dropping any missing values columns since we will be losing 40 instances of stroke. We will later impute the values with median but we can also test out different methods and pick the one that performs best.
 ```bash
 $ Loading, Initial Exploration and Cleaning...
 Information about dataset:
@@ -45,10 +43,9 @@ Number of instances with missing BMI values and a stroke: 40
 Dropping Non Relevant Columns and Rows...
 Dropped column: id
 Dropped row index(es) where gender == 'Other': [3116]
-
-
 ```
-
+We can see that 201 observations has missing bmi values, Then we count the number of instances where there is a stroke and has missing bmi values.
+We will not be dropping any missing values columns since we will be losing 40 instances of stroke. We will later impute the values with median but we can also test out different methods and pick the one that performs best.
 
 ## Exploratory Data Analysis
 We start by looking at the correlation plot of numerical features.
