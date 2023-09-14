@@ -128,7 +128,7 @@ $Train Test Split...
 ```
 This project is mainly focused on understanding and diving deep into the KNN algorithm only and anyone who is interested to explore other machine learning algorithms can do so as well
 
-## Data preprocessing and feature engineering and Selection
+## Data preprocessing, feature engineering and Selection
 
 We impute the missing values on BMI column using median value
 
@@ -222,6 +222,9 @@ We separate out the categorical variables and numerical variables to apply diffe
 ```bash
 $Extracting column index of Features...
 ```
+
+## Modeling
+
 Now we try to find the best k value and best threshold using K-fold Cross Validation for our model by trying different k_values. We iterate through k values and a range of thresholds within each fold of cross-validation. We keep track of the best_k_value, best_threshold, and best_f1_score. The threshold that yields the highest F1-score is selected as the best threshold. 
 
 ```bash
@@ -242,6 +245,9 @@ From the plot above, we can visualize the best threshold and best k value for di
 ```bash
 $Building final KNN classifier based on the best hyperparameters found in a previous step and making predictions on a test dataset...
 ```
+
+## Predictions and Performance
+
 Now we will assess the performance of the KNN classifier through various reports, plots and metrics.
 
 ```bash
@@ -286,6 +292,7 @@ ROC curve above plots the True Positive Rate (sensitivity) against the False Pos
 
 We have insights into the model predictions. Now, we should be able to explain our model, There are various ways to explain machine learning models but we will be focusing on couple metrics to explain our model
 
+## Model Explanation
 Permutation importance is one way to explain our model by shuffling the values of a column concept. Permutation importance is used only after the model is fit. It helps us answer " What features does the model thinks are important?"
 
 ```bash
@@ -372,5 +379,6 @@ affects the prediction for a single instance.
 
 We cannot forget SHAP values for model interpretability. Shapley values is a model-agnostic way and are used to explain the prediction of a model by quantifying how much each feature contributes to that prediction. They provide a global explanation for a specific prediction. These are particularlyimportant for complex models like gradient boosting and deep learning.
 
+## Ending Remarks
 To conclude, the KNN model is not performing well for this specific use case. We can try other algorithms like Logistic Regression, Decision Trees, Random Forests etc... and see if those models perform better than the current model. There is a lot of room for improvement. One can tune hyperparameters of the model like k-value and threshold and see if there is positive change in performance. One can always iterate and improve the model.
 
