@@ -9,7 +9,7 @@ Information about dataset:
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 5110 entries, 0 to 5109
 Data columns (total 12 columns):
- #   Column             Non-Null Count  Dtype
+     Column             Non-Null Count  Dtype
 ---  ------             --------------  -----
  0   id                 5110 non-null   int64
  1   gender             5110 non-null   object
