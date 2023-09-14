@@ -1,5 +1,6 @@
-# ML-KNN-Stroke-Prediction
-Exploring KNN algorithm for stroke prediction dataset. The dataset comes from kaggle [https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset]
+<p align="center">ML KNN Algorithm Exploration for Binary Classification of Stroke Prediction/p>
+
+For this project, we will be exploring KNN algorithm for stroke prediction dataset. The dataset comes from kaggle [https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset]
 
 ## Data Loading and Initial Cleaning and Exploration
 ```bash
