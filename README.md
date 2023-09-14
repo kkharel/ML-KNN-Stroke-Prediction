@@ -304,7 +304,7 @@ values are permuted (i.e. become noise). This is also known as
 permutation importance.
 
 If feature importances are computed on the same data as used for training,
-they don't reflect importance of features for generalization. Use a held-out
+they do not reflect importance of features for generalization. Use a held-out
 dataset if you want generalization feature importances.
 
 0.0660 ± 0.0119  age
