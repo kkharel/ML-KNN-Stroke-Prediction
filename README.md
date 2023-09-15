@@ -277,9 +277,9 @@ The weighted average precision (95%) suggests that the model is highly precise f
 
 From the consfusion metrics, 
 True Positives (TP): 62, the model correctly identified 60 instances as potential stroke cases
-True Negatives (TN): 1040, the model correctly identified 1161 instances as non stroke cases
-False Positives (FP): 418, the model incorrectly predicted a stroke when there was no stroke
-False Negatives (FN): 13, the model failed to identify 15 instances of potential stroke cases
+True Negatives (TN): 1040, the model correctly identified 1040 instances as non stroke cases
+False Positives (FP): 418, the model incorrectly predicted 418 instances as having a stroke when there was no stroke
+False Negatives (FN): 13, the model failed to identify 13 instances of potential stroke cases
 
 Now we plot the ROC curve.
 
