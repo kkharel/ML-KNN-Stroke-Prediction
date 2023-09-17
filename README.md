@@ -276,7 +276,7 @@ In disease prevention and identification cases like stroke prediction, the model
 The weighted average precision (95%) suggests that the model is highly precise for non-stroke cases, which can be important to avoid unnecessary concern for those without strokes.
 
 From the consfusion metrics, 
-True Positives (TP): 62, the model correctly identified 60 instances as potential stroke cases
+True Positives (TP): 62, the model correctly identified 62 instances as potential stroke cases
 True Negatives (TN): 1040, the model correctly identified 1040 instances as non stroke cases
 False Positives (FP): 418, the model incorrectly predicted 418 instances as having a stroke when there was no stroke
 False Negatives (FN): 13, the model failed to identify 13 instances of potential stroke cases
